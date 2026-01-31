@@ -25,9 +25,7 @@ export default function HeroSection() {
             making healthy living effortless and personalized.
           </p>
 
-          <button className="mt-8 px-7 py-3 bg-white text-[1.1rem] rounded-full font-bold 
-          shadow-[0_10px_50px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_80px_rgba(0,0,0,0.15)] 
-          hover:bg-gray-100 transition-all duration-300">
+          <button className="mt-8 px-7 py-3 bg-white text-[1.1rem] text-[#23262F] rounded-full font-bold shadow-[0_10px_50px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_80px_rgba(0,0,0,0.15)] hover:bg-gray-100 transition-all duration-300">
             Read More
           </button>
         </div>
@@ -44,7 +42,7 @@ export default function HeroSection() {
                   Time Tracker
                 </div>
 
-                <button className="flex items-center gap-1 text-sm px-3 py-1 border border-gray-200 rounded-full bg-white">
+                <button className="flex items-center gap-1 text-sm px-3 py-1 border border-gray-200 rounded-full text-[#23262F] bg-white">
                   <HistoryIcon fontSize="small" />
                   History
                 </button>
@@ -77,7 +75,7 @@ export default function HeroSection() {
                       <AccessTimeIcon fontSize="small" className="text-blue-600" />
                     </div>
                     <div>
-                      <p className="font-medium">Loom UI Design System</p>
+                      <p className="text-[#23262F] font-medium">Loom UI Design System</p>
                       <p className="text-xs text-gray-500">1:20:35</p>
                     </div>
                   </div>
@@ -91,7 +89,7 @@ export default function HeroSection() {
                       <AccessTimeIcon fontSize="small" className="text-blue-600" />
                     </div>
                     <div>
-                      <p className="font-medium">Loom UI / UX Designer</p>
+                      <p className=" text-[#23262F] font-medium">Loom UI / UX Designer</p>
                       <p className="text-xs text-gray-500">1:45:35</p>
                     </div>
                   </div>

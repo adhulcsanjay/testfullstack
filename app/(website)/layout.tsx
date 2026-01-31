@@ -1,4 +1,5 @@
 import Header from "./header";
+import Footer from './footer'
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -8,6 +9,7 @@ export default function RootLayout({
     <>
     <Header />
     {children}
+    <Footer/>
     </>
     
   );

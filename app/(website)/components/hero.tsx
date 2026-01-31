@@ -87,7 +87,7 @@ export default function Hero() {
         </div>
 
         {/* Heading */}
-        <h2 className="text-[2.2rem] sm:text-[2.8rem] lg:text-[3.5rem] font-bold text-center mt-4">
+        <h2 className="text-[2.2rem] sm:text-[2.8rem] lg:text-[3.5rem] text-[#23262F] font-bold text-center mt-4">
           Your AI Health Coach
         </h2>
 
@@ -106,7 +106,7 @@ export default function Hero() {
               height={25}
             />
             <div className="text-left leading-tight">
-              <p className="text-[1rem] font-bold">App Store</p>
+              <p className="text-[1rem] text-[#23262F] font-bold">App Store</p>
             </div>
           </button>
 
@@ -118,7 +118,7 @@ export default function Hero() {
               height={25}
             />
             <div className="text-left leading-tight">
-              <p className="text-[1rem] font-bold">Google Play</p>
+              <p className="text-[1rem] text-[#23262F] font-bold">Google Play</p>
             </div>
           </button>
         </div>
