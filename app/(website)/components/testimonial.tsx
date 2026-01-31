@@ -1,7 +1,11 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 const testimonials = [
@@ -20,12 +24,14 @@ const testimonials = [
 
 export default function TestimonialSection() {
   const [index, setIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const prev = () => setIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
   const next = () => setIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1));
-
 
   useEffect(() => {
     itemRefs.current[index]?.scrollIntoView({
@@ -35,10 +41,48 @@ export default function TestimonialSection() {
     });
   }, [index]);
 
-  return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#F4F5F6] text-center px-4 sm:px-6">
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 82%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+      gsap.fromTo(
+        cardRef.current,
+        { opacity: 0, y: 56 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power3.out",
+          delay: 0.12,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 82%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
-      <h2 className="text-[1.75rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3.2rem] leading-tight font-semibold text-[#1F2937]">
+  return (
+    <section ref={sectionRef} className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#F4F5F6] text-center px-4 sm:px-6">
+
+      <h2 ref={headingRef} className="text-[1.75rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3.2rem] leading-tight font-semibold text-[#1F2937]">
         Our Users Feel the <br /> Transformation
       </h2>
       <p className="text-gray-500 text-sm sm:text-[1.05rem] max-w-md mx-auto mt-3">
@@ -53,8 +97,8 @@ export default function TestimonialSection() {
         >
           <ArrowBackIosNewIcon fontSize="small" />
         </button>
-    
-        <div className="bg-white w-full max-w-[750px] rounded-2xl px-4 sm:px-8 md:px-16 lg:px-28 py-8 sm:py-10">
+
+        <div ref={cardRef} className="bg-white w-full max-w-[750px] rounded-2xl px-4 sm:px-8 md:px-16 lg:px-28 py-8 sm:py-10">
           <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-[1.05rem] lg:text-[1.15rem]">
             “{testimonials[index].message}”
           </p>

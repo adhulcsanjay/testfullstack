@@ -1,17 +1,62 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import HistoryIcon from "@mui/icons-material/History";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        leftRef.current,
+        { opacity: 0, x: -48 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 82%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+      gsap.fromTo(
+        rightRef.current,
+        { opacity: 0, x: 48 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          delay: 0.15,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 82%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="w-full bg-[#FCFCFD] py-12 sm:py-16 md:py-20 lg:py-24">
+    <section ref={sectionRef} className="w-full bg-[#FCFCFD] py-12 sm:py-16 md:py-20 lg:py-24">
       <div className="grid grid-cols-12 gap-8 sm:gap-10 md:gap-12 lg:gap-4 items-center px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28">
 
-      
-        <div className="col-span-12 xl:col-span-7">
+        <div ref={leftRef} className="col-span-12 xl:col-span-7">
           <h1 className="text-[1.75rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3.2rem] leading-tight font-semibold text-gray-900">
             Maximizing Your Health <br /> Potential Together
           </h1>
@@ -30,8 +75,7 @@ export default function HeroSection() {
           </button>
         </div>
 
-
-        <div className="col-span-12 xl:col-span-5 flex justify-center lg:justify-end">
+        <div ref={rightRef} className="col-span-12 xl:col-span-5 flex justify-center lg:justify-end">
           <div className="relative bg-[#F4F5F6] p-4 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl w-full max-w-xl">
             <div className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl w-full">
 

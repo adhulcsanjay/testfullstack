@@ -1,6 +1,9 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
   {
@@ -32,13 +35,54 @@ const faqs = [
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(2);
+  const sectionRef = useRef<HTMLElement>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
 
   const toggle = (i: number) => {
     setOpenIndex(openIndex === i ? null : i);
   };
 
-  // GSAP animation
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 82%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+      gsap.fromTo(
+        listRef.current,
+        { opacity: 0, y: 48 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power3.out",
+          delay: 0.1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 82%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  // GSAP accordion animation
   useEffect(() => {
     contentRefs.current.forEach((el, i) => {
       if (!el) return;
@@ -62,9 +106,9 @@ export default function FAQSection() {
   }, [openIndex]);
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-[#FCFCFD] text-center px-4 sm:px-6">
+    <section ref={sectionRef} className="py-12 sm:py-16 md:py-20 lg:py-28 bg-[#FCFCFD] text-center px-4 sm:px-6">
 
-      <h2 className="text-[1.75rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3.2rem] leading-tight font-semibold text-[#1F2937]">
+      <h2 ref={headingRef} className="text-[1.75rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3.2rem] leading-tight font-semibold text-[#1F2937]">
         Frequently Asked <br /> Questions
       </h2>
 
@@ -73,7 +117,7 @@ export default function FAQSection() {
         assistant app
       </p>
 
-      <div className="max-w-5xl mx-auto mt-10 sm:mt-12 md:mt-16 border-t border-gray-200 px-2 sm:px-4">
+      <div ref={listRef} className="max-w-5xl mx-auto mt-10 sm:mt-12 md:mt-16 border-t border-gray-200 px-2 sm:px-4">
         {faqs.map((faq, i) => (
           <div key={i} className="border-b border-gray-200 py-4 sm:py-6">
    
