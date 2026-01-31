@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Offer() {
   return (
-    <section className="relative w-full h-[900px] bg-[#FCFCFD] overflow-hidden">
+    <section className="relative w-full min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[800px] xl:h-[900px] bg-[#FCFCFD] overflow-hidden">
         <div className="absolute right-[22rem] top-[10rem] z-10 mt-16 hidden lg:block">
           <Image
             src="/images/Icons (2).png"
@@ -43,7 +43,7 @@ export default function Offer() {
           />
         </div>
 
-      {/* Background Image */}
+ 
       <Image
         src="/images/Collaboration Background Shape special offer.png"
         alt="offer Background"
@@ -52,19 +52,17 @@ export default function Offer() {
         priority
       />
 
-      {/* Content Layer */}
-      <div className="relative z-10 w-full flex flex-col items-center justify-center h-full">
-      <h3 className="text-gray-600 font-semibold">SPECIAL LAUNCH OFFER</h3>
+      <div className="relative z-10 w-full flex flex-col items-center justify-center h-full px-4 sm:px-6 py-12 sm:py-16">
+      <h3 className="text-gray-600 font-semibold text-sm sm:text-base">SPECIAL LAUNCH OFFER</h3>
       <h2 className="text-[2.2rem] sm:text-[2.8rem] lg:text-[3.5rem] text-[#23262F] font-semibold max-w-2xl text-center mt-4 leading-tight">
       Your journey to better health starts now
         </h2>
 
-        {/* Subtext */}
         <p className="max-w-[35rem] mx-auto text-gray-500 text-base sm:text-[1.1rem] font-medium text-center mt-2">
         Get 50% off your first 3 months when you start your trial today!
         </p>
 
-        {/* Buttons */}
+
         <div className="flex flex-col sm:flex-row gap-4 mt-6">
           <button className="flex items-center gap-3 px-6 py-3 bg-white rounded-full hover:bg-gray-200 transition">
             <Image

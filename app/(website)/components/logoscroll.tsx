@@ -13,7 +13,7 @@ export default function LogoScroll() {
     "/images/Logoscroll5.png",
   ];
 
-  // duplicate logos for seamless loop
+ 
   const allLogos = [...logos, ...logos];
 
   useEffect(() => {
@@ -30,16 +30,16 @@ export default function LogoScroll() {
   }, []);
 
   return (
-    <section className="overflow-hidden bg-[#FCFCFD] w-full py-20">
+    <section className="overflow-hidden bg-[#FCFCFD] w-full py-12 sm:py-16 md:py-20">
       <div
         ref={containerRef}
-        className="flex gap-20 w-max"
+        className="flex gap-8 sm:gap-12 md:gap-16 lg:gap-20 w-max"
       >
         {allLogos.map((logo, index) => (
           <img
             key={index}
             src={logo}
-            className="logo-item w-50 h-auto object-contain"
+            className="logo-item w-24 sm:w-32 md:w-40 lg:w-48 xl:w-[200px] h-auto object-contain"
             alt="logo"
           />
         ))}

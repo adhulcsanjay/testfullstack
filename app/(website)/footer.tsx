@@ -9,17 +9,16 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#FCFCFD] pt-20">
-      <div className=" px-24">
+    <footer className="bg-[#FCFCFD] pt-12 md:pt-16 lg:pt-20">
+      <div className="px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24">
 
-        {/* Top Grid */}
-        <div className="flex justify-between gap-16">
 
-          {/* Logo + Description */}
+        <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-16">
+
           <div>
             <div className="flex items-center gap-2">
-              {/* Replace later with your logo */}
-              <Image src="/images/Logo.png" alt="Reppoo" 
+              <Image src="/images/Logo.png"
+               alt="Reppoo" 
             width={1000}
             height={1000}
             className="w-[100px] sm:w-[120px] md:w-[130px] h-auto"/>
@@ -32,8 +31,8 @@ export default function Footer() {
 
             <p className="text-gray-700 mt-4">hello@reppoo.com</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
-          {/* Company */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
+        
           <div>
             <h4 className="font-bold text-gray-900 mb-4">Company</h4>
             <ul className="space-y-3 text-gray-600">
@@ -43,7 +42,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* App */}
+         
           <div>
             <h4 className="font-bold text-gray-900 mb-4">App</h4>
             <ul className="space-y-3 text-gray-600">
@@ -52,7 +51,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
+    
           <div>
             <h4 className="font-bold text-gray-900 mb-4">Legal Pages</h4>
             <ul className="space-y-3 text-gray-600">
@@ -63,17 +62,16 @@ export default function Footer() {
         </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-200 my-8"></div>
+     
+        <div className="border-t border-gray-200 my-6 md:my-8"></div>
 
-        {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 pb-6 md:pb-8">
 
           <p className="text-gray-700 text-sm">
             © Copyright Reppoo
           </p>
 
-          {/* Social Icons */}
+ 
           <div className="flex items-center gap-5">
             {[
               { icon: <FacebookIcon />, link: "#" },

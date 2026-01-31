@@ -7,12 +7,12 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 export default function HeroSection() {
   return (
-    <section className="w-full bg-[#FCFCFD] py-16 lg:py-24">
-      <div className="grid grid-cols-12 gap-12 lg:gap-4 items-center px-6 lg:px-28">
+    <section className="w-full bg-[#FCFCFD] py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="grid grid-cols-12 gap-8 sm:gap-10 md:gap-12 lg:gap-4 items-center px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28">
 
-        {/* LEFT CONTENT */}
-        <div className="col-span-12 lg:col-span-7">
-          <h1 className="text-[2.4rem] lg:text-[3.2rem] leading-tight font-semibold text-gray-900">
+      
+        <div className="col-span-12 xl:col-span-7">
+          <h1 className="text-[1.75rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3.2rem] leading-tight font-semibold text-gray-900">
             Maximizing Your Health <br /> Potential Together
           </h1>
 
@@ -30,12 +30,12 @@ export default function HeroSection() {
           </button>
         </div>
 
-        {/* RIGHT UI CARD */}
-        <div className="col-span-12 lg:col-span-5 flex justify-center lg:justify-end">
-          <div className="relative bg-[#F4F5F6] p-10 rounded-3xl w-full max-w-xl">
-            <div className="bg-white p-6 rounded-3xl w-full">
 
-              {/* HEADER */}
+        <div className="col-span-12 xl:col-span-5 flex justify-center lg:justify-end">
+          <div className="relative bg-[#F4F5F6] p-4 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl w-full max-w-xl">
+            <div className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl w-full">
+
+       
               <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-2 font-semibold text-gray-800 text-[1.1rem]">
                   <AccessTimeIcon fontSize="small" />
@@ -48,11 +48,10 @@ export default function HeroSection() {
                 </button>
               </div>
 
-              {/* TIMER */}
               <div className="bg-[#F4F5F6] rounded-3xl px-4 pb-3 pt-4 flex justify-between items-center shadow-sm">
                 <div>
                   <p className="text-sm text-[#1F2937]">Design System</p>
-                  <h2 className="text-[3rem] font-bold text-gray-900">
+                  <h2 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] font-bold text-gray-900">
                     10:34:<span className="text-blue-600">00</span>
                   </h2>
                 </div>
@@ -62,13 +61,12 @@ export default function HeroSection() {
                 </button>
               </div>
 
-              {/* PREVIOUS TASKS */}
+
               <div className="mt-4">
                 <h4 className="text-sm font-semibold text-gray-600 mb-2">
                   Previous Tasks
                 </h4>
 
-                {/* Task 1 */}
                 <div className="flex items-center justify-between bg-white p-1 rounded-xl">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
@@ -82,7 +80,6 @@ export default function HeroSection() {
                   <MoreVertIcon className="text-gray-400" />
                 </div>
 
-                {/* Task 2 */}
                 <div className="flex items-center justify-between bg-white p-1 rounded-xl">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">

@@ -26,7 +26,7 @@ export default function TestimonialSection() {
   const prev = () => setIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
   const next = () => setIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1));
 
-  // Always keep active button in view
+
   useEffect(() => {
     itemRefs.current[index]?.scrollIntoView({
       behavior: "smooth",
@@ -36,55 +36,54 @@ export default function TestimonialSection() {
   }, [index]);
 
   return (
-    <section className="py-24 bg-[#F4F5F6] text-center">
-      {/* Heading */}
-      <h2 className="text-[2.4rem] lg:text-[3.2rem] leading-tight font-semibold text-[#1F2937]">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#F4F5F6] text-center px-4 sm:px-6">
+
+      <h2 className="text-[1.75rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3.2rem] leading-tight font-semibold text-[#1F2937]">
         Our Users Feel the <br /> Transformation
       </h2>
-      <p className="text-gray-500 text-[1.05rem] max-w-md mx-auto mt-3">
+      <p className="text-gray-500 text-sm sm:text-[1.05rem] max-w-md mx-auto mt-3">
         Real Stories from People Empowered by Personalized Wellness
       </p>
 
-      {/* Main Card */}
-      <div className="relative flex items-center justify-center mt-16">
-        {/* Left Button */}
+      <div className="relative flex items-center justify-center mt-10 sm:mt-12 md:mt-16 gap-2 sm:gap-4">
+
         <button
-  onClick={prev}
-  className="absolute left-[18%] w-16 h-16 border border-gray-500 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition"
->
-  <ArrowBackIosNewIcon fontSize="small" />
-</button>
-        {/* Card */}
-        <div className="bg-white w-[750px] rounded-2xl px-28 py-10">
-          <p className="text-gray-700 leading-relaxed text-[1.15rem]">
+          onClick={prev}
+          className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 border border-gray-500 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition"
+        >
+          <ArrowBackIosNewIcon fontSize="small" />
+        </button>
+    
+        <div className="bg-white w-full max-w-[750px] rounded-2xl px-4 sm:px-8 md:px-16 lg:px-28 py-8 sm:py-10">
+          <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-[1.05rem] lg:text-[1.15rem]">
             “{testimonials[index].message}”
           </p>
 
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <div className="w-12 h-12 bg-[#C98C6B] rounded-full"></div>
-            <div className="text-left">
-              <p className="font-semibold text-gray-800 text-[1.2rem]">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-4 sm:mt-6">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#C98C6B] rounded-full shrink-0"></div>
+            <div className="text-left min-w-0">
+              <p className="font-semibold text-gray-800 text-sm sm:text-base md:text-[1.2rem] truncate">
                 {testimonials[index].name}, {testimonials[index].role}
               </p>
-              <p className="text-sm text-gray-400">{testimonials[index].tag}</p>
+              <p className="text-xs sm:text-sm text-gray-400">{testimonials[index].tag}</p>
             </div>
           </div>
         </div>
 
-        {/* Right Button */}
+
         <button
-  onClick={next}
-  className="absolute right-[18%] w-16 h-16 bg-[#2563EB] rounded-full flex items-center justify-center text-white hover:bg-blue-600 transition"
->
-  <ArrowForwardIosIcon fontSize="small" />
-</button>
+          onClick={next}
+          className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-[#2563EB] rounded-full flex items-center justify-center text-white hover:bg-blue-600 transition"
+        >
+          <ArrowForwardIosIcon fontSize="small" />
+        </button>
       </div>
 
-      {/* Bottom Buttons Slider */}
-      <div className="mt-6 flex justify-center">
+
+      <div className="mt-6 flex justify-center px-2">
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto no-scrollbar max-w-[750px] py-1"
+          className="flex gap-3 sm:gap-6 overflow-x-auto no-scrollbar w-full max-w-[750px] py-1"
         >
           {testimonials.map((t, i) => (
             <button
@@ -93,17 +92,17 @@ export default function TestimonialSection() {
                 itemRefs.current[i] = el;
               }}
               onClick={() => setIndex(i)}
-              className={`flex items-center gap-3 px-6 py-6 bg-white rounded-2xl min-w-[240px] transition-all border
+              className={`flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-4 sm:py-6 bg-white rounded-2xl min-w-[180px] sm:min-w-[220px] md:min-w-[240px] transition-all border shrink-0
                 ${
                   i === index
                     ? "scale-105"
                     : "border-gray-200 opacity-40"
                 }`}
             >
-              <div className="w-12 h-12 bg-[#C98C6B] rounded-full"></div>
-              <div className="text-left">
-                <p className="font-medium text-gray-800 text-[1.2rem]">{t.name}</p>
-                <p className="text-[.9rem] text-gray-400">{t.role}</p>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#C98C6B] rounded-full shrink-0"></div>
+              <div className="text-left min-w-0">
+                <p className="font-medium text-gray-800 text-sm sm:text-base md:text-[1.2rem]">{t.name}</p>
+                <p className="text-xs sm:text-[.9rem] text-gray-400">{t.role}</p>
               </div>
             </button>
           ))}

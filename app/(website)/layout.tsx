@@ -1,5 +1,6 @@
 import Header from "./header";
 import Footer from './footer'
+import LenisProvider from "./components/smoothscroll";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -7,9 +8,11 @@ export default function RootLayout({
 }>) {
   return (
     <>
+    <LenisProvider>
     <Header />
     {children}
     <Footer/>
+    </LenisProvider>
     </>
     
   );

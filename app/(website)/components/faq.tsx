@@ -62,47 +62,46 @@ export default function FAQSection() {
   }, [openIndex]);
 
   return (
-    <section className="py-28 bg-[#FCFCFD] text-center">
-      {/* Heading */}
-      <h2 className="text-[2.4rem] lg:text-[3.2rem] leading-tight font-semibold text-[#1F2937]">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-[#FCFCFD] text-center px-4 sm:px-6">
+
+      <h2 className="text-[1.75rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3.2rem] leading-tight font-semibold text-[#1F2937]">
         Frequently Asked <br /> Questions
       </h2>
 
-      <p className="text-gray-500 text-[1.05rem] max-w-md mx-auto mt-3">
-        Get answers to common questions about our AI health <br />
+      <p className="text-gray-500 text-sm sm:text-[1.05rem] max-w-md mx-auto mt-3">
+        Get answers to common questions about our AI health <br className="hidden sm:block" />
         assistant app
       </p>
 
-      {/* FAQ Container */}
-      <div className="max-w-5xl mx-auto mt-16 border-t border-gray-200">
+      <div className="max-w-5xl mx-auto mt-10 sm:mt-12 md:mt-16 border-t border-gray-200 px-2 sm:px-4">
         {faqs.map((faq, i) => (
-          <div key={i} className="border-b border-gray-200 py-6">
-            {/* Question */}
+          <div key={i} className="border-b border-gray-200 py-4 sm:py-6">
+   
             <button
               onClick={() => toggle(i)}
-              className="flex w-full items-center justify-between text-left"
+              className="flex w-full items-start sm:items-center justify-between text-left gap-2"
             >
               <span
-                className={`text-[2rem] font-medium transition ${
+                className={`text-base sm:text-lg md:text-xl lg:text-[2rem] font-medium transition flex-1 min-w-0 ${
                   openIndex === i ? "text-[#3772FF]" : "text-[#111827]"
                 }`}
               >
                 {faq.question}
               </span>
 
-              <span className="text-[2.5rem] font-light text-gray-600">
+              <span className="text-xl sm:text-2xl md:text-[2.5rem] font-light text-gray-600 shrink-0 ml-2">
                 {openIndex === i ? "−" : "+"}
               </span>
             </button>
 
-            {/* Answer Wrapper (GSAP Controlled) */}
+
             <div
               ref={(el) => {
                 contentRefs.current[i] = el;
               }}
               className="overflow-hidden h-0 opacity-0"
             >
-              <p className="mt-4 text-gray-500 text-[1.5rem] leading-relaxed text-left">
+              <p className="mt-4 text-gray-500 text-sm sm:text-base md:text-lg lg:text-[1.5rem] leading-relaxed text-left">
                 {faq.answer}
               </p>
             </div>
