@@ -67,7 +67,7 @@ export default function Header() {
               </div>
               <div className="min-w-0 text-left">
                 <p className="text-sm sm:text-[1rem] font-bold text-gray-800 truncate max-w-[120px] sm:max-w-[180px]">
-                  {user.name}
+                {user?.name ?? "Admin"}
                 </p>
                 <p className="text-xs text-gray-500 truncate max-w-[120px] sm:max-w-[180px]">
                   {user.email}
