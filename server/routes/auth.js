@@ -1,3 +1,7 @@
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, "..", "..", ".env.local") });
+require("dotenv").config({ path: path.join(__dirname, "..", "..", ".env") });
+
 const express = require("express");
 const { createToken, COOKIE_NAME } = require("../auth");
 
@@ -39,7 +43,11 @@ router.get("/me", (req, res) => {
   if (!token) return res.status(401).json({ ok: false });
   const admin = verifyToken(token);
   if (!admin) return res.status(401).json({ ok: false });
-  return res.json({ ok: true, email: admin.email });
+  const name =
+    process.env.ADMIN_NAME ||
+    (admin.email && admin.email.split("@")[0]) ||
+    "Admin";
+  return res.json({ ok: true, email: admin.email, name });
 });
 
 module.exports = router;
