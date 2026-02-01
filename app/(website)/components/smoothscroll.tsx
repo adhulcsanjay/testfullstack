@@ -13,7 +13,6 @@ interface LenisProviderProps {
 
 export default function LenisProvider({ children }: LenisProviderProps) {
   useEffect(() => {
-    // Start at top on every load (prevents loading "from the middle" on refresh/navigation)
     if (typeof window !== "undefined") {
       window.history.scrollRestoration = "manual";
       window.scrollTo(0, 0);
@@ -26,14 +25,12 @@ export default function LenisProvider({ children }: LenisProviderProps) {
       smoothWheel: true,
     });
 
-    // Force Lenis to start at top (in case it read a stale scroll position)
     lenis.scrollTo("top", { immediate: true });
 
-    // Sync Lenis with GSAP ScrollTrigger so scroll-driven animations fire correctly
     lenis.on("scroll", ScrollTrigger.update);
 
     const onTicker = (time: number) => {
-      lenis.raf(time * 1000); // GSAP ticker uses seconds, Lenis uses ms
+      lenis.raf(time * 1000); 
     };
     gsap.ticker.add(onTicker);
     gsap.ticker.lagSmoothing(0);

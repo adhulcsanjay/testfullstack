@@ -35,7 +35,7 @@ export default function Hero() {
         const d = await r.json();
         setData(d);
       } catch {
-        // keep default data
+       
       }
     }
     load();
@@ -45,7 +45,7 @@ export default function Hero() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      // Images: start hidden, animate in
+      
       gsap.set([bgShapeRef.current, leftCardRef.current, mainPhoneRef.current, rightCardRef.current], {
         opacity: 0,
       });
@@ -58,7 +58,7 @@ export default function Hero() {
         .to(mainPhoneRef.current, { opacity: 1, scale: 1, y: 0, duration: 0.65 }, "-=0.5")
         .to(rightCardRef.current, { opacity: 1, x: 0, duration: 0.6 }, "-=0.5");
 
-      // Text & CTA: start below, fade in
+ 
       gsap.set([avatarsRef.current, headingRef.current, subtextRef.current, buttonsRef.current], {
         opacity: 0,
         y: 32,

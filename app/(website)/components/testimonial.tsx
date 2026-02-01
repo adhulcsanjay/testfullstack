@@ -47,7 +47,7 @@ export default function TestimonialSection() {
         const list = await r.json();
         setTestimonials(Array.isArray(list) && list.length ? list : DEFAULT_TESTIMONIALS);
       } catch {
-        // fallback to default
+       
       }
     }
     load();
@@ -111,7 +111,7 @@ export default function TestimonialSection() {
       ref={sectionRef}
       className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#F4F5F6] text-center px-4 sm:px-6"
     >
-      {/* Heading */}
+      
       <h2
         ref={headingRef}
         className="text-[1.75rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3.2rem]
@@ -124,12 +124,12 @@ export default function TestimonialSection() {
         Real Stories from People Empowered by Personalized Wellness
       </p>
 
-      {/* Card + Arrows */}
+    
       <div
         className="relative flex flex-col md:flex-row items-center justify-center
                    mt-10 sm:mt-12 md:mt-16 gap-4 md:gap-2"
       >
-        {/* Left Arrow (md+) */}
+    
         <button
           onClick={prev}
           className="hidden md:flex shrink-0 w-12 h-12 md:w-16 md:h-16
@@ -139,7 +139,7 @@ export default function TestimonialSection() {
           <ArrowBackIosNewIcon fontSize="small" />
         </button>
 
-        {/* Testimonial Card */}
+ 
         <div
           ref={cardRef}
           className="bg-white w-full max-w-[750px] rounded-2xl
@@ -163,7 +163,7 @@ export default function TestimonialSection() {
           </div>
         </div>
 
-        {/* Right Arrow (md+) */}
+      
         <button
           onClick={next}
           className="hidden md:flex shrink-0 w-12 h-12 md:w-16 md:h-16
@@ -173,7 +173,7 @@ export default function TestimonialSection() {
           <ArrowForwardIosIcon fontSize="small" />
         </button>
 
-        {/* Bottom Arrows (< md) */}
+       
         <div className="flex md:hidden items-center justify-center gap-4 mt-4">
           <button
             onClick={prev}
@@ -195,7 +195,7 @@ export default function TestimonialSection() {
         </div>
       </div>
 
-      {/* Thumbnails */}
+    
       <div className="mt-6 flex justify-center px-2">
         <div
           ref={scrollRef}
