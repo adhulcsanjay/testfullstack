@@ -1,12 +1,23 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import gsap from "gsap";
+import { fetchApi } from "@/lib/api";
+
+type HeroData = { title: string; subtitle: string; image: string };
+
+const DEFAULT_HERO: HeroData = {
+  title: "Your AI Health Coach",
+  subtitle:
+    "Transform your wellness journey with personalized AI-powered guidance that adapts to your unique needs.",
+  image: "/images/Group 1171275467.png",
+};
 
 export default function Hero() {
+  const [data, setData] = useState<HeroData>(DEFAULT_HERO);
   const sectionRef = useRef<HTMLElement>(null);
   const bgShapeRef = useRef<HTMLDivElement>(null);
   const leftCardRef = useRef<HTMLDivElement>(null);
@@ -16,6 +27,19 @@ export default function Hero() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subtextRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const r = await fetchApi("api/content/hero");
+        const d = await r.json();
+        setData(d);
+      } catch {
+        // keep default data
+      }
+    }
+    load();
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -78,7 +102,7 @@ export default function Hero() {
 
         <div ref={mainPhoneRef} className="relative z-20">
           <Image
-            src="/images/Group 1171275467.png"
+            src={data.image || "/images/Group 1171275467.png"}
             alt="Main Phone"
             width={500}
             height={500}
@@ -123,11 +147,11 @@ export default function Hero() {
         </div>
 
         <h2 ref={headingRef} className="text-[2.2rem] sm:text-[2.8rem] lg:text-[3.5rem] text-[#23262F] font-bold text-center mt-4">
-          Your AI Health Coach
+          {data.title || DEFAULT_HERO.title}
         </h2>
 
         <p ref={subtextRef} className="max-w-[35rem] mx-auto text-gray-500 text-base sm:text-[1.1rem] font-medium text-center mt-2">
-          Transform your wellness journey with personalized AI-powered guidance that adapts to your unique needs.
+          {data.subtitle || DEFAULT_HERO.subtitle}
         </p>
 
         <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 mt-6">

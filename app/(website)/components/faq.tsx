@@ -2,10 +2,13 @@
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { fetchApi } from "@/lib/api";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const faqs = [
+type FaqItem = { _id?: string; question: string; answer: string };
+
+const DEFAULT_FAQS: FaqItem[] = [
   {
     question: "What features does the AI Health Assistant offer?",
     answer:
@@ -17,16 +20,6 @@ const faqs = [
       "Yes. You can customize goals, routines, reminders, diet preferences, and health priorities to match your lifestyle.",
   },
   {
-    question: "How accurate is the AI health tracking?",
-    answer:
-      "Experience the future of personalized health and wellness before everyone else. Join our exclusive early access program and help shape the future of AI-powered health coaching.",
-  },
-  {
-    question: "Do I need any special equipment?",
-    answer:
-      "No special equipment is required. The AI works with your device and optional wearable integrations.",
-  },
-  {
     question: "How does the free trial work?",
     answer:
       "You get full access during the trial period. You can cancel anytime before billing starts.",
@@ -34,7 +27,21 @@ const faqs = [
 ];
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(2);
+  const [faqs, setFaqs] = useState<FaqItem[]>(DEFAULT_FAQS);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const r = await fetchApi("api/faqs");
+        const list = await r.json();
+        setFaqs(Array.isArray(list) && list.length ? list : DEFAULT_FAQS);
+      } catch {
+        // keep default
+      }
+    }
+    load();
+  }, []);
   const sectionRef = useRef<HTMLElement>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const headingRef = useRef<HTMLHeadingElement>(null);

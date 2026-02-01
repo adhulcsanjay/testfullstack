@@ -1,18 +1,41 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import HistoryIcon from "@mui/icons-material/History";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { fetchApi } from "@/lib/api";
 
 gsap.registerPlugin(ScrollTrigger);
 
+type AboutData = { heading: string; paragraph: string };
+
+const DEFAULT_ABOUT: AboutData = {
+  heading: "Maximizing Your Health Potential Together",
+  paragraph:
+    "Your AI-powered health companion transforms the way you approach wellness, making healthy living effortless and personalized.",
+};
+
 export default function HeroSection() {
+  const [data, setData] = useState<AboutData>(DEFAULT_ABOUT);
   const sectionRef = useRef<HTMLElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const r = await fetchApi("api/content/about");
+        const d = await r.json();
+        setData(d);
+      } catch {
+        // keep default data
+      }
+    }
+    load();
+  }, []);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -58,7 +81,7 @@ export default function HeroSection() {
 
         <div ref={leftRef} className="col-span-12 xl:col-span-7">
           <h1 className="text-[1.75rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3.2rem] leading-tight font-semibold text-gray-900">
-            Maximizing Your Health <br /> Potential Together
+            {data.heading || DEFAULT_ABOUT.heading}
           </h1>
 
           <h3 className="mt-6 text-lg font-semibold text-gray-900">
@@ -66,8 +89,7 @@ export default function HeroSection() {
           </h3>
 
           <p className="mt-3 max-w-lg text-gray-500 text-[1.05rem] font-medium">
-            Your AI-powered health companion transforms the way you approach wellness,
-            making healthy living effortless and personalized.
+            {data.paragraph || DEFAULT_ABOUT.paragraph}
           </p>
 
           <button className="mt-8 px-7 py-3 bg-white text-[1.1rem] text-[#23262F] rounded-full font-bold shadow-[0_10px_50px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_80px_rgba(0,0,0,0.15)] hover:bg-gray-100 transition-all duration-300">

@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "server": "node server/index.js",
+    "dev:server": "node server/index.js",
     "lint": "eslint"
   },
   "dependencies": {
@@ -14,13 +16,21 @@
     "@mui/icons-material": "^7.3.7",
     "@mui/material": "^7.3.7",
     "@studio-freight/lenis": "^1.0.42",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
     "gsap": "^3.14.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^7.0.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
