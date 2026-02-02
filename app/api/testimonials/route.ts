@@ -32,13 +32,13 @@ export async function POST(request: Request) {
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   try {
     const body = await request.json();
-    const doc: Omit<TestimonialDoc, "_id"> = {
+    const doc = {
       name: body.name ?? "",
       role: body.role ?? "",
       message: body.message ?? "",
     };
     const db = await getDb();
-    const result = await db.collection("testimonials").insertOne(doc as TestimonialDoc);
+    const result = await db.collection("testimonials").insertOne(doc);
     return NextResponse.json({
       _id: String(result.insertedId),
       name: doc.name,
