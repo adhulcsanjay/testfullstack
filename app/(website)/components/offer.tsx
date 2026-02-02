@@ -35,7 +35,7 @@ export default function Offer() {
 
   return (
     <section ref={sectionRef} className="relative w-full min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[800px] xl:h-[900px] bg-[#FCFCFD] overflow-hidden">
-        <div className="absolute right-[22rem] top-[10rem] z-10 mt-16 hidden lg:block">
+        <div className="absolute right-[4rem] xl:right-[22rem] top-[10rem] z-10 mt-16 hidden lg:block">
           <Image
             src="/images/Icons (2).png"
             alt="Right top Card"
@@ -44,7 +44,7 @@ export default function Offer() {
             className="w-[110px] h-auto"
           />
         </div>
-        <div className="absolute left-[22rem] top-[10rem] z-10 mt-16 hidden lg:block">
+        <div className="absolute left-[4rem] xl:left-[22rem] top-[10rem] z-10 mt-16 hidden lg:block">
           <Image
             src="/images/Icons.png"
             alt="left top Card"
@@ -55,7 +55,7 @@ export default function Offer() {
         </div>
 
 
-        <div className="absolute right-[24rem] bottom-[14rem] z-10 mt-16 hidden lg:block">
+        <div className="absolute right-[15rem] xl:right-[24rem] bottom-[14rem] z-10 mt-16 hidden lg:block">
           <Image
             src="/images/Icons (3).png"
             alt="Right bottom Card"
@@ -64,7 +64,7 @@ export default function Offer() {
             className="w-[110px] h-auto"
           />
         </div>
-        <div className="absolute left-[24rem] bottom-[14rem] z-10 mt-16 hidden lg:block">
+        <div className="absolute left-[15rem] xl:left-[24rem] bottom-[14rem] z-10 mt-16 hidden lg:block">
           <Image
             src="/images/Icons (1).png"
             alt="left bottom Card"

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -118,28 +119,34 @@ export default function HeroSection() {
                 <div>
                   <p className="text-sm text-[#1F2937]">Design System</p>
                   <h2 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] font-bold text-gray-900">
-                    10:34:<span className="text-blue-600">00</span>
+                    10:34:<span className="text-[#2075FF]">00</span>
                   </h2>
                 </div>
 
-                <button className="bg-blue-600 p-4 rounded-full text-white shadow-md hover:scale-105 transition">
+                <button className="bg-[#2075FF] p-4 rounded-full text-white shadow-md hover:scale-105 transition">
                   <PlayArrowIcon fontSize="large" className="rounded-[1rem]" />
                 </button>
               </div>
 
 
-              <div className="mt-4">
-                <h4 className="text-sm font-semibold text-gray-600 mb-2">
+              <div className="mt-2">
+                <h4 className="text-sm font-medium text-gray-600">
                   Previous Tasks
                 </h4>
 
                 <div className="flex items-center justify-between bg-white p-1 rounded-xl">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                      <AccessTimeIcon fontSize="small" className="text-blue-600" />
-                    </div>
+                  <div className="w-10 h-10 bg-[#F1F3F5] rounded-full flex items-center justify-center">
+  <Image
+    src="/images/loom_symbol.svg.png" 
+    alt="Time"
+    width={24}
+    height={24}
+    className="object-contain"
+  />
+</div>
                     <div>
-                      <p className="text-[#23262F] font-medium">Loom UI Design System</p>
+                      <p className="text-[.9rem] text-[#23262F] font-medium">Loom UI Design System</p>
                       <p className="text-xs text-gray-500">1:20:35</p>
                     </div>
                   </div>
@@ -148,11 +155,17 @@ export default function HeroSection() {
 
                 <div className="flex items-center justify-between bg-white p-1 rounded-xl">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                      <AccessTimeIcon fontSize="small" className="text-blue-600" />
-                    </div>
+                  <div className="w-10 h-10 bg-[#F1F3F5] rounded-full flex items-center justify-center">
+  <Image
+    src="/images/loom_symbol.svg.png" 
+    alt="Time"
+    width={24}
+    height={24}
+    className="object-contain"
+  />
+</div>
                     <div>
-                      <p className=" text-[#23262F] font-medium">Loom UI / UX Designer</p>
+                      <p className="text-[.9rem] text-[#23262F] font-medium">Loom UI / UX Designer</p>
                       <p className="text-xs text-gray-500">1:45:35</p>
                     </div>
                   </div>
