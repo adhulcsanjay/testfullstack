@@ -1,12 +1,13 @@
 const path = require("path");
 const dotenv = require("dotenv");
 
-dotenv.config({
-  path:
-    process.env.NODE_ENV === "production"
-      ? undefined
-      : path.join(__dirname, "..", ".env.local"),
-});
+// dotenv.config({
+//   path:
+//     process.env.NODE_ENV === "production"
+//       ? undefined
+//       : path.join(__dirname, "..", ".env.local"),
+// });
+dotenv.config();
 
 const express = require("express");
 const cors = require("cors");
