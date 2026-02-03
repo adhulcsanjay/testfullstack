@@ -3,6 +3,15 @@ const { createToken, verifyToken, COOKIE_NAME } = require("../auth");
 
 const router = express.Router();
 
+// Cookie options: must match exactly when setting and clearing (required for cross-origin)
+const isProduction = process.env.NODE_ENV === "production";
+const cookieOptions = {
+  httpOnly: true,
+  secure: isProduction,
+  sameSite: isProduction ? "none" : "lax",
+  path: "/",
+};
+
 // LOGIN
 router.post("/login", (req, res) => {
   try {
@@ -20,32 +29,19 @@ router.post("/login", (req, res) => {
     }
 
     const token = createToken(email);
-
-    // res.cookie(COOKIE_NAME, token, {
-    //   httpOnly: true,
-    //   secure: process.env.NODE_ENV === "production",
-    //   sameSite: "lax",
-    //   maxAge: 7 * 24 * 60 * 60 * 1000,
-    //   path: "/",
-    // });
     res.cookie(COOKIE_NAME, token, {
-      httpOnly: true,
-      secure: true,        // ALWAYS true on Vercel (https)
-  sameSite: "none", 
+      ...cookieOptions,
       maxAge: 7 * 24 * 60 * 60 * 1000,
-      path: "/",
     });
-
-
     return res.json({ success: true });
   } catch (e) {
     return res.status(400).json({ error: "Invalid request" });
   }
 });
 
-// LOGOUT
+// LOGOUT – same path/secure/sameSite as login so browser clears the cookie (cross-origin)
 router.post("/logout", (req, res) => {
-  res.clearCookie(COOKIE_NAME, { path: "/" });
+  res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: 0 });
   return res.json({ success: true });
 });
 
